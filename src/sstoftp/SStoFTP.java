@@ -1,7 +1,9 @@
 package sstoftp;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
@@ -14,6 +16,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import sun.net.ftp.FtpClient;
 import sun.net.ftp.FtpProtocolException;
+import org.apache.commons.net.ftp.FTP;
+import org.apache.commons.net.ftp.FTPClient;
 
 public class SStoFTP {
 
@@ -38,19 +42,27 @@ public class SStoFTP {
 	
 	public static void FTPscreenshots(String filename, String ftpfolder) {
 
-		String username = "username";
-		String password = "password";
+		String username = "testuser";
+		String password = "qwerty";
 		
 		FTPClient client = new FTPClient();
 				
 		try {
-			client.connect("someftp.com", 8080);
+			client.connect("127.0.0.1", 21);
 			client.login(username, password);
+				
+			//File ftpfile = new File(filename +".png");
+			File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
+			File localfile = new File(filename+"xxx.png");
+			FileUtils.copyFile(ssf, localfile, true);
+						
+			InputStream inputStream = new FileInputStream(filename+"xxx.png");
+						
+			String ftpaddr = filename+".png";
+			client.storeFile(ftpaddr, inputStream);
+		
 			
-			File ftpfile = new File(client.getPassiveHost() + "/" + filename +".png");
-			File ssfile = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
-			
-			FileUtils.copyFile(ssfile, ftpfile, true);
+		
 		
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -59,13 +71,7 @@ public class SStoFTP {
 			
 		
 		
-		File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
-        try {
-			FileUtils.copyFile(ssf, new File(filename+".png"), true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	
         
         
        
