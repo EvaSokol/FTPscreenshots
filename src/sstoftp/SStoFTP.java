@@ -4,8 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
+import java.io.ObjectInputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.net.ftp.FTPClient;
@@ -13,11 +12,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import sun.net.ftp.FtpClient;
-import sun.net.ftp.FtpProtocolException;
-import org.apache.commons.net.ftp.FTP;
-import org.apache.commons.net.ftp.FTPClient;
 
 public class SStoFTP {
 
@@ -28,15 +22,15 @@ public class SStoFTP {
 		// TODO Auto-generated method stub
 
 		//Go to some where to take screenshot
-		Driver = new FirefoxDriver();
-		String BaseUrl = "http://www.bing.com/";
-		Driver.get(BaseUrl);
+//		Driver = new FirefoxDriver();
+//		String BaseUrl = "http://www.bing.com/";
+//		Driver.get(BaseUrl);
 		
 		//Using our method
 		FTPscreenshots("asd1", "zxc");
 		
 		//Close screenshot source 
-		Driver.close();
+//		Driver.close();
 	}
 	
 	
@@ -52,16 +46,21 @@ public class SStoFTP {
 			client.login(username, password);
 				
 			//File ftpfile = new File(filename +".png");
-			File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
-			File localfile = new File(filename+"xxx.png");
-			FileUtils.copyFile(ssf, localfile, true);
-						
-			InputStream inputStream = new FileInputStream(filename+"xxx.png");
-						
-			String ftpaddr = filename+".png";
-			client.storeFile(ftpaddr, inputStream);
-		
+//			File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
+//			File localfile = new File(filename+"xxx.png");
+//			FileUtils.copyFile(ssf, localfile, true);
+//						
+//			InputStream inputStream = new FileInputStream(localfile);
+//			
+//						
+//			String ftpaddr = filename+".png";
+//			client.storeFile(ftpaddr, inputStream);
 			
+			String file = "55555.jpg";
+			File localfive = new File(file);
+			InputStream inputfive = new FileInputStream(localfive);
+			
+			client.storeFile(file, inputfive);	
 		
 		
 		} catch (IOException e1) {
