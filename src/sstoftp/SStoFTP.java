@@ -71,7 +71,7 @@ public class SStoFTP {
 			ftp.stor(new File("avatar.jpg"));
 			
 			//http://www.jibble.org/simpleftp/
-			
+								
 		
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
