@@ -3,7 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/selenium_at_home"/>
-	<classpathentry kind="lib" path="M:/Tests/GitHub/FTPscreenshots/apache-commons-net.jar.zip"/>
-	<classpathentry kind="lib" path="M:/Tests/GitHub/FTPscreenshots/apache-commons-net.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium_at_work"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
