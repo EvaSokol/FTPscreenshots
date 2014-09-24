@@ -6,5 +6,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium_at_work"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar.zip"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/simpleftp.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
