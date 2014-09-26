@@ -6,10 +6,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
+import java.util.Iterator;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
 import sun.net.ftp.FtpClient;
 import sun.net.ftp.FtpProtocolException;
 
@@ -45,10 +48,21 @@ public class SStoFTP {
 			fc.login(username, password.toCharArray());
 			
 			File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
-
 			InputStream fis = new FileInputStream(ssf);
 			
-			fc.putFile(filename+".png", fis);
+			Iterator it = fc.listFiles("/"); 
+			
+			while (it.hasNext() ) {
+				System.out.println(it.next().getClass());
+				
+			};
+			
+	//		fc.makeDirectory(ftpfolder);
+			
+			
+			
+			
+			fc.putFile(ftpfolder + "/" + filename+".png", fis);
 		
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
