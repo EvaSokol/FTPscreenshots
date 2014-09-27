@@ -7,13 +7,13 @@ import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.Iterator;
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import sun.net.ftp.FtpClient;
+import sun.net.ftp.FtpDirEntry;
 import sun.net.ftp.FtpProtocolException;
 
 public class SStoFTP {
@@ -29,7 +29,7 @@ public class SStoFTP {
 		Driver.get(BaseUrl);
 		
 		//Using our method
-		FTPscreenshots("asd1", "zxc");
+		FTPscreenshots("asd1", "zxc1");
 		
 		//Close screenshot source 
 		Driver.close();
@@ -52,16 +52,18 @@ public class SStoFTP {
 			
 			Iterator it = fc.listFiles("/"); 
 			
+			FtpDirEntry dir;
+			boolean bool = false;
+			
 			while (it.hasNext() ) {
-				System.out.println(it.next().getClass());
-				
+				dir = (FtpDirEntry) it.next();
+				if (dir.getName().compareTo(ftpfolder) == 0)
+					bool = true;
 			};
 			
-	//		fc.makeDirectory(ftpfolder);
-			
-			
-			
-			
+			if (bool == false)
+				fc.makeDirectory(ftpfolder);
+						
 			fc.putFile(ftpfolder + "/" + filename+".png", fis);
 		
 		} catch (IOException e1) {
