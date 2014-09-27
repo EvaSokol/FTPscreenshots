@@ -11,7 +11,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import sun.net.ftp.FtpClient;
 import sun.net.ftp.FtpDirEntry;
 import sun.net.ftp.FtpProtocolException;
@@ -21,17 +20,16 @@ public class SStoFTP {
 	static WebDriver Driver;
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		//Go to some where to take screenshot
+		
+	//Go to some where to take screenshot
 		Driver = new FirefoxDriver();
 		String BaseUrl = "http://www.bing.com/";
 		Driver.get(BaseUrl);
 		
-		//Using our method
+	//Using our method
 		FTPscreenshots("asd1", "zxc1");
 		
-		//Close screenshot source 
+	//Close screenshot source 
 		Driver.close();
 	}
 	
@@ -39,31 +37,37 @@ public class SStoFTP {
 
 		String username = "testuser";
 		String password = "qwerty";
+		String ftpAddr = "127.0.0.1";
+		int ftpPort = 21;
 				
 		try {
-			
+	// Connection to FTP
 			FtpClient fc = FtpClient.create();
-			SocketAddress addr = new InetSocketAddress("127.0.0.1", 21);
+			SocketAddress addr = new InetSocketAddress(ftpAddr, ftpPort);
 			fc.connect(addr);
 			fc.login(username, password.toCharArray());
 			
+	//Taking screenshot
 			File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
 			InputStream fis = new FileInputStream(ssf);
 			
-			Iterator it = fc.listFiles("/"); 
+	//Checking if directory exists 
+			Iterator <FtpDirEntry> it = fc.listFiles("/"); 
 			
 			FtpDirEntry dir;
-			boolean bool = false;
+			boolean dirExists = false;
 			
 			while (it.hasNext() ) {
-				dir = (FtpDirEntry) it.next();
+				dir = (FtpDirEntry)it.next();
 				if (dir.getName().compareTo(ftpfolder) == 0)
-					bool = true;
+					dirExists = true;
 			};
 			
-			if (bool == false)
+			if (dirExists == false)
 				fc.makeDirectory(ftpfolder);
-						
+			
+	//Put screenshot to folder on ftp
+			
 			fc.putFile(ftpfolder + "/" + filename+".png", fis);
 		
 		} catch (IOException e1) {
