@@ -68,7 +68,7 @@ public class SStoFTP {
 			
 	//Put screenshot to folder on ftp
 			
-			fc.putFile(ftpfolder + "/" + filename+".png", fis);
+			fc.putFile(ftpfolder + "/" + filename + ".png", fis);
 		
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

@@ -4,9 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/selenium_at_home"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Selenium_at_work"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/simpleftp.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/simpleftp.jar_at_home"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/apache-commons-net.jar_at_home"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
